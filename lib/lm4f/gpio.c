@@ -437,7 +437,7 @@ void gpio_unlock_commit(u32 gpioport, u8 gpios)
  */
 void gpio_toggle(u32 gpioport, u8 gpios)
 {
-	GPIO_DATA(gpioport)[gpios] ^= 0;
+	GPIO_DATA(gpioport)[gpios] ^= gpios;
 }
 /**@}*/
 
