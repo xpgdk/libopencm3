@@ -558,6 +558,30 @@ void uart_disable_tx_dma(u32 uart)
 }
 /**@}*/
 
+/** @defgroup uart_fifo UART FIFO control
+ * @ingroup uart_file
+ *
+ * \brief <b>Enabling and controlling UART FIFO</b>
+ *
+ */
+/**@{*/
+void uart_enable_fifo(u32 uart)
+{
+	UART_LCRH(uart) |= UART_LCRH_FEN;
+}
+
+void uart_disable_fifo(u32 uart)
+{
+	UART_LCRH(uart) &= ~UART_LCRH_FEN;
+}
+
+void uart_set_fifo_trigger_levels(u32 uart, enum uart_fifo_rx_trigger_level rx_level, enum uart_fifo_tx_trigger_level tx_level)
+{
+	UART_IFLS(uart) = rx_level | tx_level;
+}
+/**@}*/
+
+
 /**
  * @}
  */
